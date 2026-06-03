@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <!--Mi primer página html del curso-->
-<html>
-    <head>
-        <title>TechShop</title>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{general/fragmentos :: head}"/>
+        <!--<title>TechShop</title>
         <meta charset="utf-8"/>
         <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
-    </head>
+    </head>-->
     <body>
+        <header th:replace="~{general/fragmentos :: header}"/>
+        <footer th:replace="~{general/fragmentos :: footer}"/>
+        <!--[[#{carrito.titulo}]]
         <header>
             <nav>
                 <a class="logo nav-link" href="/">TechShop</a>
@@ -22,6 +27,6 @@
         </section>
         <footer>
             Todos los Derechos Reservados TechShop 2025 &copy;
-        </footer>
+        </footer>-->
     </body>
 </html>
