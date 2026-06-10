@@ -1,4 +1,4 @@
-package com.tienda;
+package TechShop.AryeriTorres;
 
 import java.util.Locale;
 import org.springframework.context.MessageSource;
