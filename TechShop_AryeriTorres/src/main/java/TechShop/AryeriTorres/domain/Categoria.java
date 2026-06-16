@@ -34,5 +34,20 @@ public class Categoria implements Serializable {
 
     @Column(name = "activo")
     private Boolean activo;
+    
+    public Integer getIdCategoria() {
+        return idCategoria;
+    }
 
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
 }

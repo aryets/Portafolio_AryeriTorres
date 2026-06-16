@@ -15,10 +15,11 @@ public class CategoriaService {
 
     // El repositorio es final para asegurar la inmutabilidad
     private final CategoriaRepository categoriaRepository;
+    private final FirebaseStorageService firebaseStorageService;
 
-    // Inyección por constructor (No requiere @Autowired en Spring moderno)
-    public CategoriaService(CategoriaRepository categoriaRepository) {
+    public CategoriaService(CategoriaRepository categoriaRepository, FirebaseStorageService firebaseStorageService) {
         this.categoriaRepository = categoriaRepository;
+        this.firebaseStorageService = firebaseStorageService;
     }
 
     @Transactional(readOnly = true)
@@ -33,7 +34,7 @@ public class CategoriaService {
     public Optional<Categoria> getCategoria(Integer idCategoria) {
         return categoriaRepository.findById(idCategoria);
     }
- /*
+
     @Transactional
     public void save(Categoria categoria, MultipartFile imagenFile) {
         categoria = categoriaRepository.save(categoria);
@@ -63,5 +64,5 @@ public class CategoriaService {
             // Lanza una nueva excepción para encapsular el problema de integridad de datos
             throw new IllegalStateException("No se puede eliminar la categoria. Tiene datos asociados.", e);
         }
-    }*/
+    }
 }

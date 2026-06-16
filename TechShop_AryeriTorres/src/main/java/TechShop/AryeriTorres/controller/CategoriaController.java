@@ -34,7 +34,7 @@ public class CategoriaController {
         model.addAttribute("totalCategorias", categorias.size());
         return "/categoria/listado";
     }
-    /*
+   
     @PostMapping("/guardar")
     public String guardar(@Valid Categoria categoria, @RequestParam MultipartFile imagenFile, RedirectAttributes redirectAttributes) {
 
@@ -62,7 +62,7 @@ public class CategoriaController {
         }
         redirectAttributes.addFlashAttribute(titulo, messageSource.getMessage(detalle, null, Locale.getDefault()));
         return "redirect:/categoria/listado";
-    }*/
+    }
 
     @GetMapping("/modificar/{idCategoria}")
     public String modificar(@PathVariable("idCategoria") Integer idCategoria, Model model, RedirectAttributes redirectAttributes) {
