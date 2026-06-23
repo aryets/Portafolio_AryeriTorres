@@ -32,6 +32,7 @@ public class CategoriaController {
         var categorias = categoriaService.getCategorias(false);
         model.addAttribute("categorias", categorias);
         model.addAttribute("totalCategorias", categorias.size());
+        model.addAttribute("categoria", new Categoria()); 
         return "/categoria/listado";
     }
    
