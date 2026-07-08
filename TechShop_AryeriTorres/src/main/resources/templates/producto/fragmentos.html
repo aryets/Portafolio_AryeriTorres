@@ -110,14 +110,41 @@
                                             <td th:text="${p.activo} ? 'Activa':'Inactiva'"></td>
                                             <td sec:authorize="hasRole('ROLE_ADMIN')">
                                                 <button type="button" class="btn btn-danger"
-                                                        data-bs-toggle="modal" data-bs-target="#confirmModal"
-                                                        th:data-bs-id="${p.idProducto}"
-                                                        th:data-bs-descripcion="${p.descripcion}">
+                                                        data-bs-toggle="modal"
+                                                        th:data-bs-target="'#confirmModal-' + ${p.idProducto}">
                                                     <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
-                                                </button>                                           
+                                                </button>
                                                 <a th:href="@{/producto/modificar/}+${p.idProducto}" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i> [[#{accion.actualizar}]]
                                                 </a>
+                                                <!-- Modal que se utiliza para confirmar que se desea eliminar un producto -->
+                                                <div class="modal fade" th:id="'confirmModal-' + ${p.idProducto}" tabindex="-1">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <form th:action="@{/producto/eliminar}" method="post">
+                                                                <input type="hidden" name="idProducto" th:value="${p.idProducto}"/>
+                                                                <div class="modal-header bg-warning text-white">
+                                                                    <h5 class="modal-title">
+                                                                        <i class="fa-solid fa-circle-radiation"></i> [[#{accion.confirmar}]]
+                                                                    </h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>[[#{accion.confirmar.texto1}]] [[${p.descripcion}]]?</p>
+                                                                    <h6>[[#{accion.confirmar.texto2}]]</h6>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-danger">
+                                                                        <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                        <i class="fa-solid fa-xmark"></i> [[#{accion.cerrar}]]
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -204,41 +231,5 @@
                 </div>
             </div>
         </section>
-
-        <!-- 4 fragmento que se utiliza para confirmar que se desea eliminar una producto -->
-        <section th:fragment="confirmarEliminar">
-            <div class="modal fade" 
-                 id="confirmModal" 
-                 tabindex="-1" 
-                 aria-labelledby="modalLabel" 
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered custom-modal-animation">
-                    <div class="modal-content animate-slide-up">
-                        <form th:action="@{/producto/eliminar}" th:object="${producto}" method="post">
-                            <input type="hidden" name="idProducto" id="modalId"/>
-                            <div class="modal-header bg-warning text-white">
-                                <h5 class="modal-title" id="modalLabel">
-                                    <i class="fa-solid fa-circle-radiation"></i> [[#{accion.confirmar}]]
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>[[#{accion.confirmar.texto1}]] <span id="modalDescripcion"></span>?</p>
-                                <h6>[[#{accion.confirmar.texto2}]]</h6>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
-                                </button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                    <i class="fa-solid fa-xmark"></i> [[#{accion.cerrar}]]
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </body>
 </html>
