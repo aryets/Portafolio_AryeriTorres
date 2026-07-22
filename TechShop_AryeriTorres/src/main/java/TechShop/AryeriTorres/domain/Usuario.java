@@ -25,6 +25,12 @@ public class Usuario implements Serializable {
     private String rutaImagen;
     private boolean activo;
 
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
     public String getUsername() {
         return username;
     }
@@ -38,12 +44,19 @@ public class Usuario implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
     public String getRutaImagen() {
         return rutaImagen;
     }
+
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
+    }
+    
+    public String getCorreo() {
+        return correo;
+    }
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public Set<Rol> getRoles() {
@@ -53,6 +66,40 @@ public class Usuario implements Serializable {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    // Getter y Setter para apellidos
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+    
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+    
     // Relación Many-to-Many con la entidad Rol
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
