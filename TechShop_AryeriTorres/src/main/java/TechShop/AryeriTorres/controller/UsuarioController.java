@@ -46,7 +46,7 @@ public class UsuarioController {
                     messageSource.getMessage("usuario.error04", null, Locale.getDefault()));
             // Si no hay idUsuario, redirige al listado con modal para agregar
             if (usuario.getIdUsuario() == null) {
-                return "redirect:/usuario/listado";
+                return "redirect/usuario/listado";
             }
             // Si hay idUsuario, redirige al formulario de modificación
             return "redirect:/usuario/modificar/" + usuario.getIdUsuario();

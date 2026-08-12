@@ -27,4 +27,10 @@ public class Rol implements Serializable {
         this.rol = rol;
     }
 
+   public Integer getIdRol() {
+        return idRol;
+    }
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
+    }
 }

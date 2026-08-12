@@ -81,7 +81,7 @@
                                                         th:data-bs-id="${c.idCategoria}"
                                                         th:data-bs-descripcion="${c.descripcion}">
                                                     <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
-                                                </button>                                           
+                                                </button>
                                                 <a th:href="@{/categoria/modificar/}+${c.idCategoria}" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i> [[#{accion.actualizar}]]
                                                 </a>                                                
@@ -161,7 +161,7 @@
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered custom-modal-animation">
                     <div class="modal-content animate-slide-up">
-                        <form th:action="@{/categoria/eliminar}" th:object="${categoria}" method="post">
+                        <form th:action="@{/categoria/eliminar}" method="post">
                             <input type="hidden" name="idCategoria" id="modalId"/>
                             <div class="modal-header bg-warning text-white">
                                 <h5 class="modal-title" id="modalLabel">

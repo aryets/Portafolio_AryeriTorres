@@ -15,7 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-
     //Este método es quien genera el proceso de autorización...
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, @Lazy RutaService rutaService)
@@ -85,5 +84,4 @@ public class SecurityConfig {
             @Lazy UserDetailsService userDetailsService) throws Exception {
         build.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
-
 }
